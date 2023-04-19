@@ -4,6 +4,7 @@ import session from "express-session";
 import mongoose from "mongoose";
 import UserController from "./users/user-controller.js";
 import ReviewController from "./reviews/review-controller.js";
+import FollowsController from "./follows/follows-controller.js";
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/final');
@@ -18,6 +19,7 @@ app.use(express.json());
 
 UserController(app);
 ReviewController(app);
+FollowsController(app);
 
 
 app.listen(4000);
