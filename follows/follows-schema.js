@@ -1,14 +1,8 @@
 import mongoose from "mongoose";
 
-const followsSchema = mongoose.Schema({
-      followed: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'UserModel'
-      },
-      follower: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'UserModel'
-      },
+const followsSchema = new mongoose.Schema({
+      followed: String,
+      follower: String
 }, {collection: 'follows'});
 
 export default followsSchema;

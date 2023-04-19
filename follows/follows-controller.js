@@ -6,45 +6,40 @@ const FollowsController = (app) => {
     const followUser = async (req, res) => {
         const follow = {};
         const currentUser = req.session['currentUser'];
-        follow.follower = currentUser._id;
-        follow.followed = req.params.userID;
+        follow.follower = currentUser.username;
+        follow.followed = req.params.username;
         await followsDao.followUser(follow);
     }
 
     const unfollowUser = async (req, res) => {
         const follow = {};
         const currentUser = req.session['currentUser'];
-        follow.follower = currentUser._id;
-        follow.followed = req.params.userID;
+        follow.follower = currentUser.username;
+        follow.followed = req.params.username;
         await followsDao.unfollowUser(follow);
     }
 
-    //Find followers of given user ID
-    const findFollowerFromID = async (req, res) => {
-        console.log("hello world");
+    //Find followers of given username
+    const findFollowerFromUsername = async (req, res) => {
         const follow = {};
-        follow.followed = req.params.userID;
+        follow.followed = req.params.username;
         const result = await followsDao.findFromFollowCharacteristics(follow);
         res.json(result);
     }
 
-    //Find who the user ID is following
-    const findFollowedFromID = async (req, res) => {
-        console.log("hello world");
+    //Find who the username is following
+    const findFollowedFromUsername = async (req, res) => {
         const follow = {};
-        follow.follower = req.params.userID;
+        follow.follower = req.params.username;
         const result = await followsDao.findFromFollowCharacteristics(follow);
-
-
-
         res.json(result);
     }
 
-    app.post('/api/follows/:userID', followUser)
-    app.delete('/api/follows/:userID', unfollowUser)
+    app.post('/api/follows/:username', followUser)
+    app.delete('/api/follows/:username', unfollowUser)
 
-    app.post('/api/follows/follower/:userID', findFollowerFromID)
-    app.post('/api/follows/followed/:userID', findFollowedFromID)
+    app.post('/api/follows/follower/:username', findFollowerFromUsername)
+    app.post('/api/follows/followed/:username', findFollowedFromUsername)
 
 
 
