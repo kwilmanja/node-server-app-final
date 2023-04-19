@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "server-app-final",
   "version": "1.0.0",
   "description": "Web Development Final Project",
@@ -7,5 +8,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "express-session": "^1.17.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.4"
+  }
 }
