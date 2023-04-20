@@ -35,11 +35,16 @@ const FollowsController = (app) => {
         res.json(result);
     }
 
+    const findFollow = async (req, res) => {
+
+    }
+
     app.post('/api/follows/:username', followUser)
     app.delete('/api/follows/:username', unfollowUser)
 
     app.post('/api/follows/follower/:username', findFollowerFromUsername)
     app.post('/api/follows/followed/:username', findFollowedFromUsername)
+    app.post('/api/follows/follow', findFollow)
 
 
 

@@ -1,15 +1,22 @@
 import reviewsModel from "./reviews-model.js";
 
+
+export const createReview = (review) =>
+    reviewsModel.create(review);
+
+export const findReview = (rid) =>
+    reviewsModel.findById(rid);
+
+export const updateReview = (review) =>
+    reviewsModel.findByIdAndUpdate(review._id, review);
+
+export const deleteReview = (rid) =>
+    reviewsModel.findByIdAndDelete(rid);
+
+export const findReviewsFromUsername = (username) =>
+    reviewsModel.find({ username: username });
+
+export const findReviewsFromTrailID = (trailID) =>
+    reviewsModel.find({ trailID: trailID });
+
 export const findAllReviews = () => reviewsModel.find();
-
-// export const findUserById = (uid) => usersModel.findById(uid);
-//
-// export const findReviewsByUserID = (username) =>
-//     reviewsModel.findOne({ username });
-
-export const createReview = (review) => reviewsModel.create(review);
-
-export const updateReview = (rid, review) =>
-    reviewsModel.updateOne({ _id: rid }, review);
-
-export const deleteReview = (rid) => reviewsModel.deleteOne({ _id: rid });

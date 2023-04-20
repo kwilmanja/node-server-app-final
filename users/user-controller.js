@@ -32,11 +32,12 @@ const UserController = (app) => {
     };
 
     const profile = async (req, res) => {
-        const currentUser = req.session["currentUser"];
+        let currentUser = req.session["currentUser"];
         if (!currentUser) {
             res.sendStatus(404);
             return;
         }
+        currentUser = await usersDao.findUserById(currentUser._id);
         res.json(currentUser);
     };
 
@@ -51,12 +52,17 @@ const UserController = (app) => {
         // const index = users.findIndex((user) => user.id === req.params.id);
         // users[index] = user;
         const status = await dao.updateUser(req.params.id, user);
-        res.send(status);
+        res.send({hello: 'world'});
     };
 
     const findProfileByUsername = async (req, res) => {
         const user = await dao.findUserByUsername(req.params.username);
         res.json(user);
+    };
+
+    const findAllUsers = async (req, res) => {
+        const users = await dao.findAllUsers();
+        res.json(users);
     };
 
 
@@ -66,8 +72,10 @@ const UserController = (app) => {
     app.post("/api/users/profile", profile);
 
     app.get("/api/users/profile/:username", findProfileByUsername);
+    app.get("/api/users/all", findAllUsers);
 
     app.put("/api/users/:id", updateUser);
+
 
 
 

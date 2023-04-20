@@ -12,7 +12,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/final');
 const app = express();
 
 app.use(
-    session({secret: "any string", resave: false, saveUninitialized: true,}));
+    session({secret: "any string", resave: false, saveUninitialized: true,
+            cookie: {secure: false}}));
 app.use(
     cors({credentials: true, origin: "http://localhost:3000",}));
 app.use(express.json());
