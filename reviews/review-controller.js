@@ -20,7 +20,8 @@ const ReviewController = (app) => {
     };
 
     const deleteReview = async (req, res) => {
-        await dao.deleteReview(req.params.id);
+        const status = await dao.deleteReview(req.params.id);
+        res.send(status);
     };
 
     const findReviewsFromTrailID = async (req, res) => {
