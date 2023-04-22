@@ -5,11 +5,9 @@ const usersSchema = new mongoose.Schema(
         password: { type: String, required: true },
         firstName: String,
         lastName: String,
-        dob: Date,
         email: String,
         createdAt: { type: Date, default: Date.now },
         isAdmin: { type: Boolean, default: false },
-
         role: {
             type: String,
             default: "user",
@@ -21,11 +19,6 @@ const usersSchema = new mongoose.Schema(
             default: "Beginner",
             enum: ["Beginner", "Moderate", "Advanced", "Expert"],
         },
-
-        friends: [{
-            type: String
-        }]
-
     },
     { collection: "users" }
 );

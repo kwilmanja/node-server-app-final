@@ -5,8 +5,8 @@ const reviewsSchema = new mongoose.Schema(
         trailID: String,
         trailName: String,
         content: String,
-        public: { type: Boolean, default: true},
         published: { type: Date, default: Date.now },
+        public: { type: Boolean, default: true},
     },
     { collection: "reviews" }
 );

@@ -15,8 +15,8 @@ const ReviewController = (app) => {
 
     const updateReview = async (req, res) => {
         const review = req.body;
-        const status = await dao.updateReview(review);
-        res.send(status);
+        await dao.updateReview(review);
+        res.send(review);
     };
 
     const deleteReview = async (req, res) => {
