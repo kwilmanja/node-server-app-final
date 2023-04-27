@@ -9,6 +9,7 @@ const FollowsController = (app) => {
         follow.follower = currentUser.username;
         follow.followed = req.params.username;
         await followsDao.followUser(follow);
+        res.json(follow.followed);
     }
 
     const unfollowUser = async (req, res) => {
@@ -17,6 +18,7 @@ const FollowsController = (app) => {
         follow.follower = currentUser.username;
         follow.followed = req.params.username;
         await followsDao.unfollowUser(follow);
+        res.json(follow.followed);
     }
 
     //Find followers of given username
